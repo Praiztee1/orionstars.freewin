@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="img/images2.png" type="image/x-icon">
+    <!-- Alternative: Use PNG -->
+    <!-- <link rel="icon" href="favicon.png" type="image/png"> -->
+  </head>
+  
+  <title>Orio Stars - Home</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <header>
+    <div class="container"></div>
+  </header>
+
+  <section id="hero">
+    <div class="container">
+      <h2>Welcome to ORION STAR</h2>
+      <p>Experience the thrill of the best casino games and win big!</p>
+      <a href="freeplay.html" class="cta-button" id="freeplay-button">Get Free Play</a>
+    </div>
+  </section>
+
+  <!-- Loader -->
+  <div id="custom-loader" class="loading-bar">
+    <div class="loader">Loading...</div>
+  </div>
+  
+
+  <!-- Popup Modal -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <span id="close-popup" class="close">&times;</span>
+      <h2>Special Offer!</h2>
+      <p>GET 1 FREE PLAY DAILY IN WHEEL SPIN GAME. YOU CAN WIN UP TO $500.</p>
+      <a href="freeplay.html"><img src="img/spin-wheel.jpeg" alt="" style="width: 320px;"></a>
+      <p> INSTANT CASHOUT.</p>
+      <p> DEPOSIT REQUIRED</p> <p> NO HASSLE</p>
+      <a href="freeplay.html" class="cta-button">GET FREE PLAY </a>
+    </div>
+  </div>
+
+  <section id="games">
+    <div class="container">
+      <h2>Featured Games</h2>
+      <div class="game-grid">
+        <div class="game">
+          <a href="freeplay.html">
+            <img src="img/spin-wheel.jpeg" alt="">
+          </a>
+          <h3>Wheel Spin</h3>
+        </div>
+        <div class="game">
+          <img src="img/slot-machines.jfif" alt="Slot Machine">
+          <h3>Slot Machines</h3>
+        </div>
+        <div class="game">
+          <img src="img/black-jackpot.jfif" alt="Blackjack">
+          <h3>Blackjack</h3>
+        </div>
+        <div class="game">
+          <img src="img/roulette.avif" alt="Roulette">
+          <h3>Roulette</h3>
+        </div>
+        <div class="game">
+          <img src="img/milky-way.jfif" alt="Milk Way">
+          <h3>Slot Machines</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="games">
+    <div class="container">
+      <h2>Hot Games</h2>
+      <div class="game-grid">
+        <div class="game">
+          <img src="img/panda-master.jfif" alt="Panda Master">
+          <h3>Blackjack</h3>
+        </div>
+        <div class="game">
+          <img src="img/lottery.jfif" alt="Lottery">
+          <h3>Roulette</h3>
+        </div>
+        <div class="game">
+          <img src="img/juwa.jfif" alt="Juwa">
+          <h3>Poker</h3>
+        </div>
+        <div class="game">
+          <img src="img/poker.jpg" alt="Poker">
+          <h3>Poker</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="promotions">
+    <div class="container">
+      <h2>Current Promotions</h2>
+      <div class="promotion">
+        <img src="img/images (2).jfif" alt="Promotion 1">
+        <h3>70% Bonus on First Deposit</h3>
+        <p>Get a 50% bonus when you make your first deposit. Don’t miss out!</p>
+      </div>
+      <div class="promotion">
+        <img src="img/wheelstars.jpg" alt="Promotion 2">
+        <h3>Free Spins on Wheel Spin</h3>
+        <p>Enjoy 1 free spins daily for 3 days on our top wheel spin. Spin and win!</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <h2>About Us</h2>
+      <p>Orion Star is dedicated to providing the best online gambling experience. We offer a wide range of games
+        and promotions to keep the excitement going.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Orion Star. All rights reserved.</p>
+      <ul>
+        <li><a href="#privacy">Privacy Policy</a></li>
+        <li><a href="#terms">Terms of Service</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
+  <!-- Your Firebase configuration script -->
+
+  <script>
+    // Function to show the popup
+    function showPopup() {
+      document.getElementById('popup').style.display = 'block';
+    }
+
+    // Function to close the popup
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
+    }
+
+    // Show the popup after 3 seconds
+    setTimeout(showPopup, 3000);
+
+    // Add event listener to close the popup when the 'x' is clicked
+    document.getElementById('close-popup').addEventListener('click', closePopup);
+
+    // Also close the popup if the user clicks anywhere outside of the popup
+    window.onclick = function (event) {
+      if (event.target === document.getElementById('popup')) {
+        closePopup();
+      }
+    }
+
+    // Add event listener to the free play button
+    document.getElementById('freeplay-button').addEventListener('click', function (e) {
+      e.preventDefault(); // Prevent the default link behavior
+      document.getElementById('custom-loader').style.display = 'flex'; // Show the loader
+      setTimeout(function () {
+        window.location.href = 'freeplay.html'; // Redirect after 3 seconds
+      }, 3000); // Delay of 3 seconds
+    });
+  </script>
+</body>
+
+</html>

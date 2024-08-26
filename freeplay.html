@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+ 
+   <!-- Favicon -->
+   <link rel="icon" href="img/images2.png" type="image/x-icon">
+   <!-- Alternative: Use PNG -->
+  
+   <link rel="stylesheet" href="css/style.css">
+  <title>Spin Wheel</title>
+  <!-- SweetAlert2 -->
+
+</head>
+</header>
+
+
+
+<div class="main-content">
+  <div class="profile-container">
+    <h1>Welcome, <span id="user-name" style=" font-family: Arial, Helvetica, sans-serif; font-weight: 600;">User</span>!
+    </h1>
+  </div>
+
+
+  <body>
+
+    <div class="wrapper">
+      <button id="spin">Spin</button>
+      <div class="container">
+        <div class="one">$5</div>
+        <div class="two">$10</div>
+        <div class="three">Try <br> Again</div>
+        <div class="four">$20</div>
+        <div class="five">$50</div>
+        <div class="six">$100</div>
+        <div class="seven">Try <br> Again</div>
+        <div class="eight">$500</div>
+      </div>
+      <span class="arrow"></span>
+    </div>
+
+    <div id="user-data" class="user-data">
+      <pre id="data-output" class="data-output"> SPIN LEFT...</pre>
+      <div id="prize-display" class="prize-display"></div>
+    </div>
+</div>
+</div>
+
+
+<!-- Request Payout Button -->
+<button class="Btn-clk" id="request-payout-btn">
+  <svg class="svgIcon" viewBox="0 0 384 512" height="1em" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z">
+    </path>
+  </svg>
+  <span class="icon2"></span>
+  <span class="tooltip">REQUEST PAYOUT</span>
+</button>
+
+
+<!-- The Modal -->
+<div id="agreementModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Payout Agreement</h2>
+    <p>Please read the following agreement before proceeding with your payout:</p>
+    <p>
+      To unlock your payout, share your unique referral link with 2 friends on Facebook. Our system will automatically
+      detect when the shares are complete, and the payout button will become available.
+    </p>
+    <button id="acceptAgreement">Accept</button>
+    <button id="declineAgreement">Decline</button>
+  </div>
+</div>
+
+<!--payout loader-->
+<div class="dot-spinner" id="payout-loader" style="display: none;">
+  <div class="dot-spinner__dot"></div>
+  <div class="dot-spinner__dot"></div>
+  <div class="dot-spinner__dot"></div>
+  <div class="dot-spinner__dot"></div>
+  <div class="dot-spinner__dot"></div>
+  <div class="dot-spinner__dot"></div>
+  <div class="dot-spinner__dot"></div>
+  <div class="dot-spinner__dot"></div>
+</div>
+
+
+
+<button class="Btns" onclick="logout()">
+  <div class="sign">
+    <svg viewBox="0 0 512 512">
+      <path
+        d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z">
+      </path>
+    </svg>
+  </div>
+  <div class="text">Logout</div>
+</button>
+
+<div id="custom-loader" class="loading-bar">
+  <div class="loader">Please Wait...</div>
+</div>
+
+
+<div id="custom-loaders" class="loading-bar">
+  <div class="loader">logging out...</div>
+</div>
+
+
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+
+<!-- Alertify -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/alertify.js/0.3.0/alertify.min.js"></script>
+
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
+<script src="script.js"></script>
+
+<!-- Your Custom Scripts -->
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
+<script src="main.js"></script>
+
+
+<script>
+
+</script>
+
+</body>
+
+</html>

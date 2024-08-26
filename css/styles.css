@@ -1,0 +1,223 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+   
+}
+
+header {
+    background-image: url('../img/orion-logo.jpeg');
+    background-size: cover;
+    color: #fff;
+    padding: 80px 0;
+    padding-bottom: 182px;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+
+
+#hero {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 20px;
+}
+
+#hero .cta-button {
+    display: inline-block;
+    background-color: #f39c12;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+#games, #promotions, #about {
+    padding: 40px 20px;
+}
+
+.game-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.game {
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+}
+
+.game img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.promotion {
+    margin-bottom: 20px;
+}
+
+.promotion img {
+    width: 70%;
+    border-radius: 50px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+}
+
+footer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+footer ul li {
+    margin-left: 20px;
+}
+
+footer ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Popup Styles */
+/* Prevents scrolling of the main content when the popup is open */
+body.popup-open {
+    overflow: hidden;
+}
+
+.popup {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    font-weight: 700;
+    overflow-y: auto; /* Allows scrolling of the overlay */
+}
+
+.popup-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: rgb(214, 8, 8);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #f39c12;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.cta-button:hover {
+    color: rgb(0, 0, 0);
+    background-color: brown;
+}
+
+
+@media only screen and (max-width: 600px) {
+    header {
+        background-image: url('../img/orion-logo.jpeg');
+        background-size: cover;
+        color: #fff;
+        padding: 40px 0;
+    }
+}
+
+/* Hide the loader by default */
+.loading-bar {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0, 0, 0, 0.842); /* Black background with opacity */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    z-index: 9999; /* On top of other content */
+    text-align: center;
+  }
+  
+  /* The loading text and bar */
+  .loader {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: 18px;
+    background-color: #333;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .loader::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #3498db; /* Blue bar */
+    animation: load 1.5s linear infinite;
+  }
+  
+  @keyframes load {
+    0% {
+      left: -100%;
+    }
+    50% {
+      left: 0;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+

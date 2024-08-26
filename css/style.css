@@ -1,0 +1,658 @@
+/* Desktop version - unchanged */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.615), rgba(0, 0, 0, 0.5)), url('https://static.wixstatic.com/media/7b6c42_9b8b90ff6e5549c080130a83b9c5f108~mv2.png/v1/fill/w_540,h_810,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/Orion%20Stars.png');
+  background-size: contain;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.wrapper {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  margin-top: 33px;
+
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  background-color: #ccc;
+  border-radius: 50%;
+  border: 15px solid #dde;
+  position: relative;
+  overflow: hidden;
+}
+
+.container div {
+  height: 50%;
+  width: 200px;
+  position: absolute;
+  clip-path: polygon(100% 0, 50% 100%, 0 0);
+  transform: translateX(-50%);
+  transform-origin: bottom;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: sans-serif;
+  color: #fff;
+  left: 135px;
+}
+
+.container .one {
+  background-color: #3f51b5;
+  left: 50%;
+  padding-bottom: 50px;
+}
+
+.container .two {
+  background-color: #ff9800;
+  transform: rotate(45deg);
+  padding-bottom: 50px;
+}
+
+.container .three {
+  background-color: #e91e63;
+  transform: rotate(90deg);
+  padding-bottom: 50px;
+}
+
+.container .four {
+  background-color: #4caf50;
+  transform: rotate(135deg);
+  padding-bottom: 50px;
+}
+
+.container .five {
+  background-color: #009688;
+  transform: rotate(180deg);
+  padding-bottom: 50px;
+}
+
+.container .six {
+  background-color: #795548;
+  transform: rotate(225deg);
+  padding-bottom: 50px;
+}
+
+.container .seven {
+  background-color: #9c27b0;
+  transform: rotate(270deg);
+  padding-bottom: 50px;
+}
+
+.container .eight {
+  background-color: #f44336;
+  transform: rotate(315deg);
+  padding-bottom: 50px;
+}
+
+.arrow {
+  position: absolute;
+  top: 7px;
+  left: 33%;
+  transform: translateX(-50%) rotate(-22deg);
+  color: #fff;
+  font-size: 60px;
+}
+
+.arrow::before {
+  content: "\1F817";
+}
+
+#spin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  background-color: #e2e2e2;
+  text-transform: uppercase;
+  border: 8px solid #fff;
+  font-weight: bold;
+  font-size: 20px;
+  color: #000fdc;
+  width: 80px;
+  height: 80px;
+  font-family: sans-serif;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+  letter-spacing: 1px;
+}
+
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: 99999;
+  animation: blast 1.7s ease-out forwards;
+}
+
+@keyframes blast {
+  from {
+    transform: translate(0, 0) scale(0.7);
+    opacity: 1;
+  }
+
+  to {
+    transform: translate(var(--x), var(--y)) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* Mobile Version */
+@media only screen and (max-width: 600px) {
+  .wrapper {
+    width: 350px;
+    height: 350px;
+    margin-top: 3em;
+    margin-bottom: 4em;
+
+  }
+
+  .container {
+    border: 10px solid #dde;
+  }
+
+  .container div {
+    width: 160px;
+    font-size: 15px;
+    left: 85px;
+
+  }
+
+  .arrow {
+    font-size: 30px;
+    top: 20px;
+  }
+
+  #spin {
+    font-size: 15px;
+    width: 60px;
+    height: 60px;
+    border: 6px solid #fff;
+    transform: translate(-50%, -50%);
+    padding-left: 6px;
+
+  }
+
+  .arrow {
+    position: absolute;
+    top: 10px;
+    left: 30%;
+    transform: translateX(-50%) rotate(-26deg);
+    color: #ffffff;
+    font-size: 50px;
+  }
+
+  .arrow::before {
+    content: " \2193";
+  }
+
+  .main-content {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 60px;
+  }
+
+  .main-content h1 {
+    font-size: 5px;
+    margin-bottom: 13px;
+    text-align: center;
+    color: white;
+  }
+
+}
+
+.main-content {
+  margin-top: 65px;
+  font-size: 20px;
+  font-weight: 700;
+  padding-bottom: 60px;
+
+}
+
+.main-content h1 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  text-align: center;
+  color: white;
+}
+
+
+/* From Uiverse.io by vinodjangid07 */ 
+.Btns {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  overflow: hidden;
+  transition-duration: .3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+  background-color: rgb(255, 65, 65);
+  margin-left: 85rem;
+  margin-bottom: 45em;
+}
+
+/* plus sign */
+.sign {
+  width: 100%;
+  transition-duration: .3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign svg {
+  width: 17px;
+}
+
+.sign svg path {
+  fill: white;
+}
+/* text */
+.text {
+  position: absolute;
+  right: 0%;
+  width: 0%;
+  opacity: 0;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 600;
+  transition-duration: .3s;
+}
+/* hover effect on button width */
+.Btns:hover {
+  width: 125px;
+  border-radius: 40px;
+  transition-duration: .3s;
+}
+
+.Btns:hover .sign {
+  width: 30%;
+  transition-duration: .3s;
+  padding-left: 20px;
+}
+/* hover effect button's text */
+.Btns:hover .text {
+  opacity: 1;
+  width: 70%;
+  transition-duration: .3s;
+  padding-right: 10px;
+}
+/* button click effect*/
+.Btns:active {
+  transform: translate(2px ,2px);
+}
+
+@media only screen and (max-width: 600px) {
+.Btns {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 35px;
+  height: 35px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  overflow: hidden;
+  transition-duration: .3s;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+  background-color: rgb(255, 65, 65);
+  margin-left: 18rem;
+  margin-bottom: 67em;
+
+}
+}
+
+/* Loader styles */
+/* Hide the loader by default */
+.loading-bar {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-color: rgb(0, 0, 0); /* Black background with opacity */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  z-index: 9999; /* On top of other content */
+  text-align: center;
+}
+
+/* The loading text and bar */
+.loader {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: #fff;
+  font-size: 18px;
+  background-color: #333;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.loader::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: #3498db; /* Blue bar */
+  animation: load 1.5s linear infinite;
+}
+
+@keyframes load {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 0;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+
+/* /* Container styles for the user data */
+#user-data {
+  background-color: #e9ecef; /* Light grey background */
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  max-width: 300px;
+  margin: 30px auto; /* Center the container */
+  font-family: 'Courier New', Courier, monospace; /* Monospace font for a code-like appearance */
+  text-align: center; /* Center content within the container */
+  margin-top: 32px;
+  padding-bottom: 2px;
+  margin-bottom: 20px;
+}
+.prize-display {
+  padding-top: 6px;
+  font-weight: 800;
+  font-size: 25px;
+}
+
+
+/* Styling for the output text */
+#data-output {
+  background-color: #343a40; /* Dark grey background */
+  color: #ffffff; /* White text */
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 18px;
+  white-space: pre-wrap; /* Keep line breaks and white space */
+  overflow-x: auto; /* Allow horizontal scrolling if necessary */
+  margin: 0;
+}
+
+
+
+/* From Uiverse.io by vinodjangid07 */ 
+.Btn-clk {
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgb(72, 241, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  transition-duration: .3s;
+  box-shadow: 2px 2px 10px rgba(255, 255, 255, 0);
+  margin-top: 47.3em;
+  margin-left: 40em;
+}
+
+.svgIcon {
+  fill: rgb(0, 0, 0);
+}
+
+.icon2 {
+  width: 18px;
+  height: 5px;
+  border-bottom: 2px solid rgb(0, 0, 0);
+  border-left: 2px solid rgb(0, 0, 0);
+  border-right: 2px solid rgb(0, 0, 0);
+}
+
+.tooltip {
+  position: absolute;
+  right: 50px;
+  opacity: 0;
+  background-color: rgb(12, 12, 12);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition-duration: .2s;
+  pointer-events: none;
+  letter-spacing: 0.5px;
+  font-size: 18px;
+}
+
+.tooltip::before {
+  position: absolute;
+  content: "";
+  width: 10px;
+  height: 10px;
+  background-color: rgb(12, 12, 12);
+  background-size: 1000%;
+  background-position: center;
+  transform: rotate(45deg);
+  left: -5%;
+  transition-duration: .3s;
+}
+
+.Btn-clk:hover .tooltip {
+  opacity: 1;
+  transition-duration: .3s;
+}
+
+.Btn-clk:hover {
+  background-color: rgb(150, 94, 255);
+  transition-duration: .3s;
+}
+
+.Btn-clk:hover .icon2 {
+  border-bottom: 2px solid rgb(235, 235, 235);
+  border-left: 2px solid rgb(235, 235, 235);
+  border-right: 2px solid rgb(235, 235, 235);
+}
+
+.Btn-clk:hover .svgIcon {
+  fill: rgb(255, 255, 255);
+  animation: slide-in-top 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes slide-in-top {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+.Btn-clk {
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgb(89, 255, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  transition-duration: .3s;
+  box-shadow: 2px 2px 10px rgba(221, 0, 0, 0);
+  margin-top: 47.5em;
+  margin-left: 32em;
+}
+}
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 9999; /* Sit above everything else on the page */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: hidden; /* Disable scrolling when modal is active */
+  background-color: rgba(0, 0, 0, 0.7); /* Black background with opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #ffffff;
+  margin: 10% auto; /* 10% from the top, centered horizontally */
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%; /* Default width, adjust as needed */
+  max-width: 500px; /* Limit maximum width */
+  position: relative; /* Stay within modal */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Shadow effect for depth */
+  z-index: 10000; /* Ensure content stays above modal background */
+  text-align: center;
+}
+
+/* Close Button */
+.close {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Button Styling */
+#acceptAgreement, #declineAgreement {
+  padding: 10px 20px;
+  margin: 15px;
+  cursor: pointer;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+#acceptAgreement:hover, #declineAgreement:hover {
+  background-color: #0056b3;
+}
+
+/* Additional Styling for a Clean Modal */
+body.modal-open {
+  overflow: hidden; /* Prevent scrolling of the page when modal is open */
+}
+
+
+/* payout loader*/
+/* From Uiverse.io by abrahamcalsin */
+.dot-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  z-index: 10000;
+}
+
+.dot-spinner__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #007bff;
+  animation: dot-spinner 0.8s infinite ease-in-out both;
+}
+
+.dot-spinner__dot:nth-child(1) {
+  animation-delay: 0s;
+}
+.dot-spinner__dot:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.dot-spinner__dot:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.dot-spinner__dot:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.dot-spinner__dot:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.dot-spinner__dot:nth-child(6) {
+  animation-delay: 0.5s;
+}
+.dot-spinner__dot:nth-child(7) {
+  animation-delay: 0.6s;
+}
+.dot-spinner__dot:nth-child(8) {
+  animation-delay: 0.7s;
+}
+
+@keyframes dot-spinner {
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+}
+
+/* payout page css*/
+

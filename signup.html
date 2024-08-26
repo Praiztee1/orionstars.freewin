@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Signup</title>
+    <link rel="icon" href="img/images2.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+    </style>
+</head>
+<STYle>
+    /* General styles for body */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.615), rgba(0, 0, 0, 0.5)), url('https://miro.medium.com/v2/resize:fit:612/0*lSmHJUPwHFjwAzOZ.png');
+        background-size: cover;
+        background-position: center;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    /* Styling for the login form container */
+    .login-form {
+        background: rgba(0, 0, 0, 0.566);
+        border-radius: 12px;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+        max-width: 400px;
+        width: 100%;
+        padding: 30px;
+        box-sizing: border-box;
+        position: relative;
+        animation: slideIn 0.5s ease-out;
+    }
+
+    /* Header text */
+    .login-form .text {
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-align: center;
+        color: #ffffff;
+        text-transform: uppercase;
+    }
+
+    /* Form fields */
+    .field {
+        position: relative;
+        margin-bottom: 20px;
+        padding: 10px
+    }
+
+    .field input {
+        width: 95%;
+        padding: 12px 8px;
+        border: 2px solid #0072ff;
+        border-radius: 8px;
+        font-size: 16px;
+        outline: none;
+
+    }
+
+    .field input:focus {
+        border-color: #ffb700;
+        transition: border-color 0.3s ease;
+    }
+
+    .field .fas {
+        position: absolute;
+        top: 50%;
+        left: -15px;
+        padding-right: 15px;
+        transform: translateY(-50%);
+        font-size: 20px;
+        color: #0072ff;
+    }
+
+    .password-field {
+        position: relative;
+    }
+
+    .password-field .toggle-visibility {
+        position: absolute;
+        top: 50%;
+        right: 15px;
+        transform: translateY(-50%);
+        font-size: 18px;
+        color: #0072ff;
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+
+    .password-field .toggle-visibility:hover {
+        color: #00c6ff;
+    }
+
+
+    /* Submit button */
+    button {
+        width: 50%;
+        padding: 12px;
+        margin-left: 10em;
+        border: none;
+        background: linear-gradient(45deg, #00c6ff, #0072ff);
+        color: #fff;
+        font-size: 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    button:hover {
+        background: linear-gradient(45deg, #0072ff, #00c6ff);
+        transform: scale(1.05);
+    }
+
+    button:active {
+        background: linear-gradient(45deg, #0056b3, #00aaff);
+    }
+
+    /* Signup link */
+    .link {
+        text-align: center;
+        margin-top: 20px;
+        color: white;
+    }
+
+    .link a {
+        color: #0ed000;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .link a:hover {
+        text-decoration: underline;
+    }
+
+    /* Loader styles */
+    /* Hide the loader by default */
+    .loading-bar {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        background-color: rgba(0, 0, 0, 0.842);
+        /* Black background with opacity */
+        justify-content: center;
+        /* Center horizontally */
+        align-items: center;
+        /* Center vertically */
+        z-index: 9999;
+        /* On top of other content */
+        text-align: center;
+    }
+
+    /* The loading text and bar */
+    .loader {
+        position: relative;
+        display: inline-block;
+        padding: 10px 20px;
+        color: #fff;
+        font-size: 18px;
+        background-color: #333;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    .loader::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background-color: #3498db;
+        /* Blue bar */
+        animation: load 1.5s linear infinite;
+    }
+
+    @keyframes load {
+        0% {
+            left: -100%;
+        }
+
+        50% {
+            left: 0;
+        }
+
+        100% {
+            left: 100%;
+        }
+    }
+
+
+    /* Mobile responsiveness */
+    @media (max-width: 480px) {
+        .login-form {
+            padding: 20px;
+        }
+
+        .login-form .text {
+            font-size: 24px;
+        }
+
+        .field input {
+            padding: 10px 15px;
+        }
+
+        button {
+            width: 50%;
+            padding: 12px;
+            margin-left: 11.4em;
+            border: none;
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            color: #fff;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+    }
+</style>
+
+<body>
+
+    <div class="login-form">
+        <div class="text">
+            SIGNUP
+        </div>
+        <form onsubmit="signup(event)">
+            <div class="field">
+                <div class="fas fa-user"></div>
+                <input type="text" id="name" placeholder="Name" required>
+            </div>
+            <div class="field">
+                <div class="fas fa-envelope"></div>
+                <input type="email" id="email" placeholder="Email" required>
+            </div>
+            <div class="password-field">
+                <div class="field">
+                    <div class="fas fa-lock"></div>
+                    <input type="password" id="password" placeholder="Password" required oninput="validatePassword()">
+                    <i class="fa fa-eye toggle-visibility" onclick="togglePasswordVisibility()"></i>
+                </div>
+                <div id="password-error" class="error-message"></div>
+            </div>
+            <button type="submit">SIGNUP</button>
+            <div id="submit" class="link">
+                Already a member?
+                <a href="login.html">Login now</a>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+        </form>
+    </div>
+
+    <div id="loader" class="loading-bar">
+        <div class="loader">Signing Up..</div>
+    </div>
+
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyBO0mX-bkrC0qiKhQGRO4wqsT2neRoLeP8",
+            authDomain: "scamguard-alliance.firebaseapp.com",
+            databaseURL: "https://scamguard-alliance-default-rtdb.firebaseio.com",
+            projectId: "scamguard-alliance",
+            storageBucket: "scamguard-alliance.appspot.com",
+            messagingSenderId: "435955274973",
+            appId: "1:435955274973:web:962945b4c3881c4b923734",
+            measurementId: "G-Z16BYNC1LE"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+
+        // Toggle password visibility
+        function togglePasswordVisibility() {
+            var passwordInput = document.getElementById('password');
+            var toggleIcon = document.querySelector('.toggle-visibility');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+
+
+
+       
+        // Signup function
+        // Signup function
+function signup(event) {
+    event.preventDefault();
+    var loader = document.getElementById('loader');
+    loader.style.display = 'flex';
+
+    setTimeout(function () {
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+
+        // Replace dots in email to use as Firebase key
+        var emailKey = email.replace(/\./g, ',');
+
+        // Check if the email already exists
+        firebase.database().ref('users/' + emailKey).once('value')
+            .then((snapshot) => {
+                if (snapshot.exists()) {
+                    // Email already exists
+                    Swal.fire({
+                        position: 'center',
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Email already in use.'
+                    });
+                } else {
+                    // Save the signup info to Firebase Realtime Database
+                    firebase.database().ref('users/' + emailKey).set({
+                        name: name,
+                        email: email,
+                        password: password, // Storing passwords in plain text is not recommended
+                        spin: 1 // Initialize 'spin' with 3 free spins
+                    })
+                    .then(() => {
+                        // Save user details to localStorage
+                        localStorage.setItem('userName', name);
+                        localStorage.setItem('userEmail', email);
+                        localStorage.setItem('userPassword', password); // Optional: not recommended to store passwords
+
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Signed Up Successfully',
+                            showConfirmButton: false,
+                            timer: 1500
+                        }).then(() => {
+                            // Redirect to another page
+                            window.location.href = 'freeplay.html';
+                        });
+                    })
+                    .catch((error) => {
+                        var errorMessage = error.message;
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'error',
+                            title: 'Error',
+                            text: errorMessage
+                        });
+                    });
+                }
+            })
+            .finally(() => {
+                loader.style.display = 'none';
+            });
+    }, 4000); // Wait for 4 seconds before proceeding
+}
+
+
+
+        // Validate password on submit
+        function validatePasswordOnSubmit() {
+            var passwordInput = document.getElementById('password');
+            var errorDiv = document.getElementById('password-error');
+            var password = passwordInput.value;
+
+            var isValid = password.length >= 6 && /[a-zA-Z]/.test(password) && /\d/.test(password);
+
+            if (!isValid) {
+                errorDiv.textContent = 'Password must be at least 6 characters long and contain both letters and numbers.';
+            } else {
+                errorDiv.textContent = '';
+            }
+
+            return isValid;
+        }
+
+        //browser loading //
+        document.addEventListener('DOMContentLoaded', function () {
+            const links = document.querySelectorAll('a');
+
+            links.forEach(function (link) {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault(); // Prevent the default link behavior
+
+                    const href = this.getAttribute('href'); // Get the href attribute of the clicked link
+
+                    setTimeout(function () {
+                        window.location.href = href; // Navigate to the new page after the delay
+                    }, 500); // 2000 milliseconds = 2 seconds
+                });
+            });
+        });
+
+
+    </script>
+
+</body>
+
+</html>
